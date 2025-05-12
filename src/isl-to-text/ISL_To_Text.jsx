@@ -17,11 +17,36 @@ import {
   BsCopy,
   BsChevronUp,
   BsChevronDown,
+  BsGlobe,
 } from "react-icons/bs";
 import { FaUpload } from "react-icons/fa";
 
 // API base URL - change this to match your Flask server
 const API_BASE_URL = "http://localhost:5000";
+
+// Function to translate text using Google Translate API
+const translateText = async (text, targetLang = "kn") => {
+  const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=${targetLang}&dt=t&q=${encodeURIComponent(
+    text
+  )}`;
+
+  const response = await axios.get(url);
+
+  // The API returns a complex nested array structure
+  // The translated text is in the first element of the first array
+  let translatedText = "";
+
+  // Extract all translation segments
+  if (response.data && Array.isArray(response.data[0])) {
+    response.data[0].forEach((segment) => {
+      if (segment[0]) {
+        translatedText += segment[0];
+      }
+    });
+  }
+
+  return translatedText;
+};
 
 function ISL_To_Text() {
   // State management
@@ -41,6 +66,8 @@ function ISL_To_Text() {
   const [islSentence, setIslSentence] = useState(""); // New state for ISL gloss
   const [processingGloss, setProcessingEnglishText] = useState(false); // New state for gloss processing
   const [orderedSigns, setOrderedSigns] = useState([]); // New state for ordered signs
+  const [kannadaTranslation, setKannadaTranslation] = useState(""); // New state for Kannada translation
+  const [translatingToKannada, setTranslatingToKannada] = useState(false); // State to track Kannada translation progress
 
   // Refs
   const videoRef = useRef(null);
@@ -106,6 +133,27 @@ function ISL_To_Text() {
     }
   };
 
+  // Translate English text to Kannada
+  const translateToKannada = async (englishText) => {
+    if (!englishText) {
+      return;
+    }
+
+    setTranslatingToKannada(true);
+    setStatusMessage("Translating to Kannada...");
+
+    try {
+      const translatedText = await translateText(englishText, "kn");
+      setKannadaTranslation(translatedText);
+      setStatusMessage("Kannada translation generated successfully!");
+    } catch (error) {
+      console.error("Translation error:", error);
+      setErrorMessage(`Error translating to Kannada: ${error.message}`);
+    } finally {
+      setTranslatingToKannada(false);
+    }
+  };
+
   // Generate ISL gloss from detected signs
   const generateEnglishText = async (signs, ordered) => {
     if (!signs || Object.keys(signs).length === 0) {
@@ -115,6 +163,7 @@ function ISL_To_Text() {
 
     setProcessingEnglishText(true);
     setStatusMessage("Generating sentence...");
+    setKannadaTranslation(""); // Clear previous Kannada translation
 
     try {
       // Use the ordered list of signs instead of sorting by frequency
@@ -131,12 +180,18 @@ function ISL_To_Text() {
         if (response.data && response.data.english_text) {
           setIslSentence(response.data.english_text);
           setStatusMessage("English Text generated successfully!");
+
+          // Now translate the English text to Kannada
+          await translateToKannada(response.data.english_text);
         } else {
           setErrorMessage("Received invalid response from the Server");
         }
       } else {
         setIslSentence(gloss);
         setStatusMessage("English Text generated successfully!");
+
+        // Also translate single words to Kannada
+        await translateToKannada(gloss);
       }
     } catch (error) {
       console.error("Server error:", error);
@@ -220,6 +275,7 @@ function ISL_To_Text() {
     setTotalSigns(0);
     setUniqueSigns(0);
     setIslSentence(""); // Reset ISL gloss
+    setKannadaTranslation(""); // Reset Kannada translation
     setOrderedSigns([]); // Reset ordered signs
 
     // Start timer
@@ -428,11 +484,15 @@ function ISL_To_Text() {
           .join("\n");
 
         if (islSentence) {
-          text += "\n\nISL Sentence:\n" + islSentence;
+          text += "\n\nEnglish Text:\n" + islSentence;
+        }
+
+        if (kannadaTranslation) {
+          text += "\n\nKannada Translation:\n" + kannadaTranslation;
         }
 
         navigator.clipboard.writeText(text);
-        setStatusMessage("Signs and sentences copied to clipboard");
+        setStatusMessage("Signs and translations copied to clipboard");
 
         // Reset status message after 2 seconds
         setTimeout(() => {
@@ -462,6 +522,7 @@ function ISL_To_Text() {
     setIslSentence(""); // Reset ISL gloss
     setProcessingEnglishText(false);
     setOrderedSigns([]); // Reset ordered signs
+    setKannadaTranslation(""); // Reset Kannada translation
 
     // Clear any ongoing intervals
     clearInterval(timerRef.current);
@@ -729,23 +790,6 @@ function ISL_To_Text() {
                 </div>
               )}
 
-              {/* New ISL Gloss Card */}
-              {islSentence && (
-                <div className="mt-4 bg-white rounded-xl shadow-lg overflow-hidden">
-                  <div className="bg-indigo-600 text-white p-3">
-                    <h3 className="text-lg font-medium flex items-center">
-                      <BsTranslate className="mr-2" />
-                      Generated English Text
-                    </h3>
-                  </div>
-                  <div className="p-4">
-                    <div className="bg-gray-50 p-3 rounded">
-                      <p className="text-lg mb-0">{islSentence}</p>
-                    </div>
-                  </div>
-                </div>
-              )}
-
               {processingGloss && (
                 <div className="mt-4 bg-white rounded-xl shadow-lg">
                   <div className="p-3 flex items-center justify-center">
@@ -843,6 +887,52 @@ function ISL_To_Text() {
               </div>
             </div>
           </div>
+
+          {/* New ISL Gloss Card */}
+          {islSentence && (
+            <div className="mt-4 bg-white rounded-xl shadow-lg overflow-hidden">
+              <div className="bg-indigo-600 text-white p-3">
+                <h3 className="text-lg font-medium flex items-center">
+                  <BsTranslate className="mr-2" />
+                  Generated English Text
+                </h3>
+              </div>
+              <div className="p-4">
+                <div className="bg-gray-50 p-3 rounded">
+                  <p className="text-lg mb-0">{islSentence}</p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* New Kannada Translation Card */}
+          {kannadaTranslation && (
+            <div className="mt-4 bg-white rounded-xl shadow-lg overflow-hidden">
+              <div className="bg-amber-600 text-white p-3">
+                <h3 className="text-lg font-medium flex items-center">
+                  <BsGlobe className="mr-2" />
+                  Kannada Translation
+                </h3>
+              </div>
+              <div className="p-4">
+                <div className="bg-gray-50 p-3 rounded">
+                  <p className="text-lg mb-0" lang="kn">
+                    {kannadaTranslation}
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Show loading indicator when translating to Kannada */}
+          {translatingToKannada && (
+            <div className="mt-4 bg-white rounded-xl shadow-lg">
+              <div className="p-3 flex items-center justify-center">
+                <div className="animate-spin h-5 w-5 border-4 border-amber-500 border-t-transparent rounded-full mr-2"></div>
+                <span>Translating to Kannada...</span>
+              </div>
+            </div>
+          )}
 
           {/* Help Section */}
           <div className="mt-8 bg-white rounded-xl shadow-lg overflow-hidden">

@@ -33,7 +33,8 @@ function Home() {
           <img
             src="/images/bg-image.jpg"
             alt="Sign language translation visualization"
-            className="w-full h-full object-cover object-top"
+            className="w-full h-full bg-cover bg-top"
+            style={{ backgroundPosition: "70% center" }}
           />
         </div>
         <div className="container mx-auto px-6 relative z-20 flex flex-col md:flex-row items-center">
@@ -54,7 +55,7 @@ function Home() {
                 Try It Now
               </Link>
               <Link
-                to="#features"
+                to="/about"
                 className="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-3 rounded-lg text-lg font-medium transition-all duration-300 cursor-pointer whitespace-nowrap flex items-center justify-center"
               >
                 <i className="fas fa-info-circle mr-2"></i>
@@ -64,12 +65,7 @@ function Home() {
           </div>
         </div>
         <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20">
-          <Link
-            to="#features"
-            className="text-blue-600 animate-bounce block cursor-pointer whitespace-nowrap"
-          >
-            <i className="fas fa-chevron-down text-2xl"></i>
-          </Link>
+          <i className="fas fa-chevron-down text-2xl text-blue-600"></i>
         </div>
       </section>
       {/* Key Features Section */}
@@ -107,8 +103,8 @@ function Home() {
                 High Accuracy
               </h3>
               <p className="text-gray-600 text-center">
-                Advanced algorithms ensure precise recognition and
-                translation of sign gestures.
+                Advanced algorithms ensure precise recognition and translation
+                of sign gestures.
               </p>
             </div>
             {/* Feature 3 */}
@@ -171,11 +167,13 @@ function Home() {
                   </div>
                 </div>
                 <div className="md:w-1/2 md:pl-12 hidden md:block">
-                  <img
-                    src="/images/how-it-works-1.jpg"
-                    alt="Capture phase"
-                    className="rounded-lg shadow-lg w-full aspect-video object-cover object-center"
-                  />
+                  <div className="overflow-hidden rounded-lg shadow-lg h-80 md:h-96">
+                    <img
+                      src="/images/how-it-works-1.jpg"
+                      alt="Capture phase"
+                      className="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -183,11 +181,13 @@ function Home() {
             <div className="relative z-10 mb-12 md:mb-0 md:mt-24">
               <div className="flex flex-col md:flex-row items-center">
                 <div className="md:w-1/2 md:pr-12 hidden md:block md:text-right">
-                  <img
-                    src="/images/how-it-works-2.jpg"
-                    alt="Process phase"
-                    className="rounded-lg shadow-lg w-full aspect-video object-cover object-center ml-auto"
-                  />
+                  <div className="overflow-hidden rounded-lg shadow-lg h-80 md:h-96">
+                    <img
+                      src="/images/how-it-works-2.jpg"
+                      alt="Process phase"
+                      className="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
                 </div>
                 <div className="md:w-12 w-full flex justify-center">
                   <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
@@ -197,8 +197,8 @@ function Home() {
                 <div className="md:w-1/2 md:pl-12 mb-6 md:mb-0">
                   <h3 className="text-2xl font-semibold mb-3">Process</h3>
                   <p className="text-gray-600">
-                    Advanced algorithms analyze the input, recognizing
-                    patterns and mapping them to linguistic elements.
+                    Advanced algorithms analyze the input, recognizing patterns
+                    and mapping them to linguistic elements.
                   </p>
                 </div>
               </div>
@@ -219,11 +219,13 @@ function Home() {
                   </div>
                 </div>
                 <div className="md:w-1/2 md:pl-12 hidden md:block">
-                  <img
-                    src="/images/how-it-works-3.jpg"
-                    alt="Translate phase"
-                    className="rounded-lg shadow-lg w-full aspect-video object-cover object-center"
-                  />
+                  <div className="overflow-hidden rounded-lg shadow-lg h-80 md:h-96">
+                    <img
+                      src="/images/how-it-works-3.jpg"
+                      alt="Translate phase"
+                      className="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -231,11 +233,13 @@ function Home() {
             <div className="relative z-10 md:mt-24">
               <div className="flex flex-col md:flex-row items-center">
                 <div className="md:w-1/2 md:pr-12 hidden md:block md:text-right">
-                  <img
-                    src="/images/how-it-works-4.jpg"
-                    alt="Output phase"
-                    className="rounded-lg shadow-lg w-full aspect-video object-cover object-center ml-auto"
-                  />
+                  <div className="overflow-hidden rounded-lg shadow-lg h-80 md:h-96">
+                    <img
+                      src="/images/how-it-works-4.jpg"
+                      alt="Output phase"
+                      className="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
                 </div>
                 <div className="md:w-12 w-full flex justify-center">
                   <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">

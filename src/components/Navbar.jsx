@@ -57,17 +57,21 @@ function Navbar() {
             Text→ISL
           </NavLink>
           <NavLink
-            to="#about"
-            className="text-gray-800 hover:text-blue-600 transition-colors font-medium"
+            to="/about"
+            className={({ isActive }) =>
+              isActive
+                ? "text-blue-600 transition-colors font-medium"
+                : "text-gray-800 hover:text-blue-600 transition-colors font-medium"
+            }
           >
             About
           </NavLink>
-          <Link
+          {/* <Link
             to="/isl-to-text"
             className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-colors duration-300 cursor-pointer whitespace-nowrap"
           >
             Get Started
-          </Link>
+          </Link> */}
         </div>
         <div className="md:hidden">
           <button className="text-gray-800 focus:outline-none cursor-pointer whitespace-nowrap">

@@ -43,6 +43,7 @@ const VideoPlayer = ({ words, isLoading }) => {
     if (!words || words.length === 0 || activeIndex >= words.length) return;
 
     const currentWord = words[activeIndex];
+    console.log("Current word:", currentWord);
     if (
       currentWord &&
       !currentWord.isTranslatable &&

@@ -20,7 +20,7 @@ const availableWords = [
   'have',
   "take",
   "water",
-  "parent",
+  "parents",
   "rest",
   "wrong",
   "name",
@@ -33,8 +33,8 @@ const availableWords = [
   "not",
   "pain",
   "call",
-  
-  
+  "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
+
 ];
 
 // Use a function to get consistent path across different environments
@@ -57,13 +57,20 @@ export const processText = (text) => {
     .filter(word => word.length > 0);
 
   return words.map(word => {
-    const isTranslatable = availableWords.includes(word);
+    // Check if the word is "ME" or in available words list
+    const isTranslatable = word.toUpperCase() === "ME" || word.toUpperCase() === "MY" || availableWords.includes(word);
     console.log(`Word: ${word}, Translatable: ${isTranslatable}`);
+
     return {
       text: word,
       isTranslatable,
-      videoSrc: isTranslatable ? getVideoPath(word, 'mp4') : undefined,
-      videoFormats: isTranslatable ? getVideoFormats(word) : undefined
+      // If word is "ME", use the video for "I", otherwise use the normal video path
+      videoSrc: isTranslatable
+        ? (word.toUpperCase() === "ME" ? getVideoPath("i", 'mp4') : getVideoPath(word, 'mp4'))
+        : undefined,
+      videoFormats: isTranslatable
+        ? (word.toUpperCase() === "ME" ? getVideoFormats("i") : getVideoFormats(word))
+        : undefined
     };
   });
 };

@@ -38,7 +38,7 @@ const TextInput = ({
             id="text-input"
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
-            className="w-full h-14 p-4 border border-gray-300 rounded-lg shadow-sm 
+            className="w-full  p-4 border border-gray-300 rounded-lg shadow-sm 
                      focus:ring-2 focus:ring-blue-500 focus:border-blue-500 
                      resize-none transition duration-200"
             placeholder={
@@ -49,6 +49,7 @@ const TextInput = ({
             disabled={isLoading}
             aria-label="Text to translate"
             dir={selectedLanguage === "english" ? "ltr" : "auto"}
+            rows={2}
           />
         </div>
         <div className="mt-4 flex justify-end">

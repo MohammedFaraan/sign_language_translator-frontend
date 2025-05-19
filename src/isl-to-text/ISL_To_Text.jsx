@@ -569,7 +569,7 @@ function ISL_To_Text() {
       <Navbar />
 
       {/* Main Content */}
-      <main className="flex-grow pt-24 pb-16">
+      <main className="flex-grow container flex flex-col mx-auto pt-24 pb-16">
         {/* Header Section */}
         <header className="text-center mb-8">
           <h1 className="text-4xl font-bold text-indigo-800 mb-2">
@@ -938,7 +938,7 @@ function ISL_To_Text() {
           <div className="mt-8 bg-white rounded-xl shadow-lg overflow-hidden">
             <div className="bg-indigo-600 text-white p-4 flex justify-between items-center">
               <h2 className="text-lg font-semibold mb-0">
-                How to Use This Translator
+                How to Use This Translator (ಈ ಅನುವಾದಕವನ್ನು ಹೇಗೆ ಬಳಸುವುದು)
               </h2>
               <button
                 className="flex items-center bg-transparent border border-white text-white hover:bg-indigo-700 px-3 py-1 text-sm rounded transition duration-300"
@@ -955,7 +955,7 @@ function ISL_To_Text() {
 
             {showTutorial && (
               <div className="p-6">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-4">
                   <div className="bg-indigo-50 p-4 rounded-lg">
                     <div className="text-indigo-600 text-xl mb-2 flex items-center">
                       <BsCameraVideo className="mr-2" />
@@ -1000,6 +1000,72 @@ function ISL_To_Text() {
                       <li>Make clear, deliberate hand gestures</li>
                       <li>Keep your hands within the camera frame</li>
                       <li>Avoid rapid movements for better accuracy</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="bg-indigo-50 p-4 rounded-lg">
+                    <div className="text-indigo-600 text-xl mb-2 flex items-center">
+                      <BsCameraVideo className="mr-2" />
+                      ವೆಬ್‌ಕ್ಯಾಮ್ ಬಳಸುವುದು
+                    </div>
+                    <ol className="list-decimal list-inside text-gray-700 space-y-2">
+                      <li>ಪ್ರಾಂಪ್ಟ್ ಮಾಡಿದಾಗ ಕ್ಯಾಮೆರಾ ಪ್ರವೇಶವನ್ನು ಅನುಮತಿಸಿ</li>
+                      <li>ಉತ್ತಮ ಬೆಳಕಿನಲ್ಲಿ ಫ್ರೇಮ್‌ನಲ್ಲಿ ನಿಮ್ಮನ್ನು ಇರಿಸಿ</li>
+
+                      <li>
+                        ಅನುವಾದವನ್ನು ಪ್ರಾರಂಭಿಸಲು "ರೆಕಾರ್ಡಿಂಗ್ ಪ್ರಾರಂಭಿಸಿ" ಕ್ಲಿಕ್
+                        ಮಾಡಿ
+                      </li>
+
+                      <li>ಸಂಜ್ಞೆ ಭಾಷೆಯ ಸನ್ನೆಗಳನ್ನು ಸ್ಪಷ್ಟವಾಗಿ ನಿರ್ವಹಿಸಿ</li>
+
+                      <li className="mb-2">
+                        ಮುಗಿದ ನಂತರ "ರೆಕಾರ್ಡಿಂಗ್ ನಿಲ್ಲಿಸಿ" ಕ್ಲಿಕ್ ಮಾಡಿ
+                      </li>
+
+                      <li>
+                        ನಿಮ್ಮ ಸನ್ನೆಗಳನ್ನು ವಿಶ್ಲೇಷಿಸಲು "ಪ್ರಕ್ರಿಯೆ ರೆಕಾರ್ಡಿಂಗ್"
+                        ಕ್ಲಿಕ್ ಮಾಡಿ
+                      </li>
+                    </ol>
+                  </div>
+
+                  <div className="bg-indigo-50 p-4 rounded-lg">
+                    <div className="text-indigo-600 text-xl mb-2 flex items-center">
+                      <BsUpload className="mr-2" />
+                      ಫೈಲ್ ಅಪ್‌ಲೋಡ್ ಬಳಸಿ
+                    </div>
+                    <ol className="list-decimal list-inside text-gray-700 space-y-2">
+                      <li>"ಅಪ್‌ಲೋಡ್ ವೀಡಿಯೊ" ಟ್ಯಾಬ್‌ಗೆ ಬದಲಾಯಿಸಿ</li>
+                      <li>
+                        ನಿಮ್ಮ ಫೈಲ್ ಅನ್ನು ಎಳೆಯಿರಿ ಮತ್ತು ಬಿಡಿ ಅಥವಾ ಬ್ರೌಸ್ ಮಾಡಲು
+                        ಕ್ಲಿಕ್ ಮಾಡಿ
+                      </li>
+
+                      <li>ಪ್ರಕ್ರಿಯೆ ಪೂರ್ಣಗೊಳ್ಳುವವರೆಗೆ ಕಾಯಿರಿ</li>
+                      <li>
+                        ನಿಮ್ಮ ಪತ್ತೆಯಾದ ಚಿಹ್ನೆಗಳು ಮತ್ತು ISL ಹೊಳಪನ್ನು ವೀಕ್ಷಿಸಿ
+                      </li>
+                      <li>ಅಗತ್ಯವಿದ್ದರೆ ಫಲಿತಾಂಶಗಳನ್ನು ನಕಲಿಸಿ</li>
+                    </ol>
+                  </div>
+
+                  <div className="bg-indigo-50 p-4 rounded-lg">
+                    <div className="text-indigo-600 text-xl mb-2 flex items-center">
+                      <BsInfoCircle className="mr-2" />
+                      ಉತ್ತಮ ಫಲಿತಾಂಶಗಳಿಗಾಗಿ ಸಲಹೆಗಳು
+                    </div>
+                    <ul className="list-disc list-inside text-gray-700 space-y-2">
+                      <li>ಉತ್ತಮ ಬೆಳಕಿನ ಪರಿಸ್ಥಿತಿಗಳನ್ನು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ</li>
+
+                      <li>ಸರಳ ಹಿನ್ನೆಲೆಯ ವಿರುದ್ಧ ನಿಮ್ಮನ್ನು ಇರಿಸಿ</li>
+                      <li>ಸ್ಪಷ್ಟ, ಉದ್ದೇಶಪೂರ್ವಕ ಕೈ ಸನ್ನೆಗಳನ್ನು ಮಾಡಿ</li>
+
+                      <li>ಕ್ಯಾಮೆರಾ ಚೌಕಟ್ಟಿನೊಳಗೆ ನಿಮ್ಮ ಕೈಗಳನ್ನು ಇರಿಸಿ</li>
+
+                      <li>ಉತ್ತಮ ನಿಖರತೆಗಾಗಿ ತ್ವರಿತ ಚಲನೆಗಳನ್ನು ತಪ್ಪಿಸಿ</li>
                     </ul>
                   </div>
                 </div>

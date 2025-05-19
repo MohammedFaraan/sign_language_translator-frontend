@@ -152,7 +152,7 @@ const VideoCard = forwardRef(({ word, isActive, onComplete }, ref) => {
   }
 
   return (
-    <div className="w-full max-w-md mx-auto">
+    <div className="w-full max-w-xl mx-auto">
       <div className="flex justify-center mb-2">
         <h3 className="text-lg font-medium text-gray-800">
           {word.text.toUpperCase()}

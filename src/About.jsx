@@ -90,16 +90,24 @@ function About() {
             <h3 className="text-2xl font-semibold mb-4">Technologies Used</h3>
             <div className="grid grid-cols-2 gap-4 text-gray-600">
               <div>
-                <i className="fab fa-python mr-2"></i>Python
+                <i className="fab fa-react mr-2 text-cyan-500"></i>React
               </div>
               <div>
-                <i className="fab fa-react mr-2"></i>React
+                <i className="fab fa-python mr-2 text-yellow-500"></i>Python
               </div>
               <div>
-                <i className="fas fa-brain mr-2"></i>CNN & LSTM
+                <i className="fas fa-project-diagram mr-2 text-purple-500"></i>
+                CNN & LSTM
               </div>
               <div>
-                <i className="fas fa-database mr-2"></i>Spacy & NLTK
+                <i className="fas fa-video mr-2 text-blue-500"></i>OpenCV
+              </div>
+              <div>
+                <i className="fas fa-hand-paper mr-2 text-pink-500"></i>
+                MediaPipe
+              </div>
+              <div>
+                <i className="fas fa-language mr-2 text-green-600"></i>Spacy
               </div>
             </div>
           </div>
@@ -122,15 +130,15 @@ function About() {
           >
             {/* Team Lead */}
 
-            <div className="col-span-1 md:col-span-3 mb-8">
-              <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 text-center max-w-sm mx-auto">
+            <div className="col-span-2 md:col-span-3 mb-8">
+              <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 text-center max-w-xl mx-auto">
                 <img
-                  src="/images/user.png"
+                  src="/images/faraan.jpg"
                   alt="Mohammed Faraan"
                   className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
                 />
                 <h3 className="text-xl font-semibold mb-2">Mohammed Faraan</h3>
-                <p className="text-blue-600 mb-4">Team member</p>
+                <p className="text-blue-600 mb-4">Team Lead</p>
               </div>
             </div>
 
@@ -139,7 +147,7 @@ function About() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                 <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 text-center">
                   <img
-                    src="/images/user.png"
+                    src="/images/harshitha.jpg"
                     alt="Harshithashree N S"
                     className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
                   />
@@ -150,7 +158,7 @@ function About() {
                 </div>
                 <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 text-center">
                   <img
-                    src="/images/user.png"
+                    src="/images/krupank.jpg"
                     alt="Krupanka R"
                     className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
                   />
@@ -164,17 +172,17 @@ function About() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 text-center">
                   <img
-                    src="/images/user.png"
+                    src="/images/muzammil.jpg"
                     className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
                   />
                   <h3 className="text-xl font-semibold mb-2">
-                    Mohammed Muzammil Baigg
+                    Mohammed Muzammil Baig
                   </h3>
                   <p className="text-blue-600 mb-4">Team member</p>
                 </div>
                 <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 text-center">
                   <img
-                    src="/images/user.png"
+                    src="/images/priyanka.jpg"
                     alt="Lisa Wang"
                     className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
                   />
@@ -184,7 +192,7 @@ function About() {
               </div>
             </div>
             {/* Project Guide */}
-            <div className="col-span-1 md:col-span-3 mb-8 mt-8">
+            <div className="col-span-1 md:col-span-3  mt-8">
               <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 text-center max-w-md mx-auto">
                 <img
                   src="/images/user.png"

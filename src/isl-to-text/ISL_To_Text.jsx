@@ -18,6 +18,10 @@ import {
   BsChevronUp,
   BsChevronDown,
   BsGlobe,
+  BsEmojiSmile,
+  BsChatSquareText,
+  BsTags,
+  BsSignpostFill,
 } from "react-icons/bs";
 import { FaUpload } from "react-icons/fa";
 
@@ -60,6 +64,7 @@ function ISL_To_Text() {
   const [uploadProgress, setUploadProgress] = useState(0);
   const [statusMessage, setStatusMessage] = useState("");
   const [showTutorial, setShowTutorial] = useState(false);
+  const [showAvailableSigns, setShowAvailableSigns] = useState(false);
   const [recordingTimer, setRecordingTimer] = useState(0);
   const [errorMessage, setErrorMessage] = useState("");
   const [dragActive, setDragActive] = useState(false);
@@ -564,6 +569,42 @@ function ISL_To_Text() {
     };
   }, [activeInput]);
 
+  const words = [
+    "Bye",
+    "Call",
+    "Danger",
+    "Eat",
+    "Feeling",
+    "Fever",
+    "Have",
+    "Hello",
+    "Help",
+    "I",
+    "Name",
+    "Not",
+    "Please",
+    "Sleep",
+    "Thirsty",
+    "Toilet",
+    "Want",
+    "What",
+    "You",
+    "Your",
+  ];
+  const sentences = [
+    "I fever have (I have a fever).",
+    "Help Me Please (Please help me).",
+    "You feeling what? (What are you feeling?).",
+    "I toilet want. (I want to go to the toilet).",
+    "Your name what? (What is your name?).",
+    "I Want eat (I want to eat).",
+    "I not eat. (I don't want to eat).",
+    "I thirsty. (I am thirsty).",
+    "I Danger (Please help, it’s dangerous).",
+    "I sleep want. (I want to sleep).",
+    "Bye you. (Goodbye).",
+    "You Danger (Are you in danger).",
+  ];
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-blue-50 to-indigo-50">
       <Navbar />
@@ -933,6 +974,113 @@ function ISL_To_Text() {
               </div>
             </div>
           )}
+
+          {/* Available Signs Section */}
+          <div className="mt-8 bg-white rounded-2xl shadow-lg overflow-hidden">
+            {/* Header */}
+            <div className="bg-teal-600 text-white p-4 flex justify-between items-center">
+              <div className="flex items-center space-x-2">
+                <BsSignpostFill className="text-2xl" />
+                <h2 className="text-lg font-semibold m-0">
+                  Available Indian Sign Languages (ಲಭ್ಯವಿರುವ ಭಾರತೀಯ ಸಂಕೇತ
+                  ಭಾಷೆಗಳು)
+                </h2>
+              </div>
+              <button
+                className="flex items-center space-x-1 bg-teal-500 hover:bg-teal-700 transition-colors duration-300 px-4 py-2 text-sm font-medium rounded-lg"
+                onClick={() => setShowAvailableSigns(!showAvailableSigns)}
+              >
+                {showAvailableSigns ? <BsChevronUp /> : <BsChevronDown />}
+                <span>{showAvailableSigns ? "Hide" : "Show"} Signs</span>
+              </button>
+            </div>
+
+            {/* Content */}
+            {showAvailableSigns && (
+              <div className="p-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Available Words */}
+                  <div className="bg-teal-50 p-6 rounded-lg shadow-sm">
+                    <div className="flex items-center text-teal-600 text-2xl mb-4">
+                      <BsTags className="mr-3" />
+                      <span className="font-semibold text-xl">
+                        Available Words
+                      </span>
+                    </div>
+                    <ol className="list-decimal list-inside text-gray-700 space-y-2">
+                      {[
+                        "Bye",
+                        "Call",
+                        "Danger",
+                        "Eat",
+                        "Feeling",
+                        "Fever",
+                        "Have",
+                        "Hello",
+                        "Help",
+                        "I",
+                        "Name",
+                        "Not",
+                        "Please",
+                        "Sleep",
+                        "Thirsty",
+                        "Toilet",
+                        "Want",
+                        "What",
+                        "You",
+                        "Your",
+                      ].map((word) => (
+                        <li
+                          key={word}
+                          className="flex items-center space-x-2 hover:bg-teal-100 p-2 rounded transition"
+                        >
+                          <BsEmojiSmile className="text-teal-400" />
+                          <span>{word}</span>
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+
+                  {/* Available Sentences */}
+                  <div className="bg-teal-50 p-6 rounded-lg shadow-sm">
+                    <div className="flex items-center text-teal-600 text-2xl mb-4">
+                      <BsChatSquareText className="mr-3" />
+                      <span className="font-semibold text-xl">
+                        Available Sentences
+                      </span>
+                    </div>
+                    <ol className="list-decimal list-inside text-gray-700 space-y-2">
+                      {[
+                        ["I fever have", "I have a fever"],
+                        ["Help Me Please", "Please help me"],
+                        ["You feeling what?", "What are you feeling?"],
+                        ["I toilet want", "I want to go to the toilet"],
+                        ["Your name what?", "What is your name?"],
+                        ["I want eat", "I want to eat"],
+                        ["I not eat", "I don't want to eat"],
+                        ["I thirsty", "I am thirsty"],
+                        ["I danger", "Please help, it’s dangerous"],
+                        ["I sleep want", "I want to sleep"],
+                        ["Bye you", "Goodbye"],
+                        ["You danger", "Are you in danger?"],
+                      ].map(([gloss, eng]) => (
+                        <li
+                          key={gloss}
+                          className="flex items-start space-x-2 hover:bg-teal-100 p-2 rounded transition"
+                        >
+                          <BsEmojiSmile className="mt-1 text-teal-400" />
+                          <div>
+                            <span className="font-medium">{gloss}</span>
+                            <span className="text-gray-500"> — {eng}</span>
+                          </div>
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
 
           {/* Help Section */}
           <div className="mt-8 bg-white rounded-xl shadow-lg overflow-hidden">

@@ -97,7 +97,7 @@ function About() {
               </div>
               <div>
                 <i className="fas fa-project-diagram mr-2 text-purple-500"></i>
-                CNN & LSTM
+                TensorFlow
               </div>
               <div>
                 <i className="fas fa-video mr-2 text-blue-500"></i>OpenCV
@@ -138,7 +138,10 @@ function About() {
                   className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
                 />
                 <h3 className="text-xl font-semibold mb-2">Mohammed Faraan</h3>
-                <p className="text-blue-600 mb-4">Team Lead</p>
+                <p className="text-blue-600 mb-4 font-bold">Team Lead</p>
+                <p className="text-gray-600">
+                  Govt. CPC Polytechnic College, Mysore
+                </p>
               </div>
             </div>
 
@@ -154,7 +157,10 @@ function About() {
                   <h3 className="text-xl font-semibold mb-2">
                     Harshithashree N S
                   </h3>
-                  <p className="text-blue-600 mb-4">Team member</p>
+                  <p className="text-blue-600 mb-4 font-bold">Team member</p>
+                  <p className="text-gray-600">
+                    Govt. CPC Polytechnic College, Mysore
+                  </p>
                 </div>
                 <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 text-center">
                   <img
@@ -163,10 +169,14 @@ function About() {
                     className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
                   />
                   <h3 className="text-xl font-semibold mb-2">Krupanka R</h3>
-                  <p className="text-blue-600 mb-4">Team member</p>
+                  <p className="text-blue-600 mb-4 font-bold">Team member</p>
+                  <p className="text-gray-600">
+                    Govt. CPC Polytechnic College, Mysore
+                  </p>
                 </div>
               </div>
             </div>
+
             {/* Team Members Row 2 */}
             <div className="col-span-1 md:col-span-3">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -178,7 +188,10 @@ function About() {
                   <h3 className="text-xl font-semibold mb-2">
                     Mohammed Muzammil Baig
                   </h3>
-                  <p className="text-blue-600 mb-4">Team member</p>
+                  <p className="text-blue-600 mb-4 font-bold">Team member</p>
+                  <p className="text-gray-600">
+                    Govt. CPC Polytechnic College, Mysore
+                  </p>
                 </div>
                 <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 text-center">
                   <img
@@ -187,26 +200,51 @@ function About() {
                     className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
                   />
                   <h3 className="text-xl font-semibold mb-2">Priyanka K N</h3>
-                  <p className="text-blue-600 mb-4">Team member</p>
+                  <p className="text-blue-600 mb-4 font-bold">Team member</p>
+                  <p className="text-gray-600">
+                    Govt. CPC Polytechnic College, Mysore
+                  </p>
                 </div>
               </div>
+
+              
             </div>
+
             {/* Project Guide */}
-            <div className="col-span-1 md:col-span-3  mt-8">
-              <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 text-center max-w-md mx-auto">
-                <img
-                  src="/images/user.png"
-                  alt="Mohammed Faraan"
-                  className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
-                />
-                <h3 className="text-xl font-semibold mb-2">Shekhara K N</h3>
-                <p className="text-blue-600 mb-4">Project Guide</p>
-                <p className="text-gray-600">
-                  Head of Department, CSE <br />
-                  Govt. CPC Polytechnic College, Mysore
-                </p>
+            <div className="col-span-1 md:col-span-3 mt-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                  <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 text-center">
+                    <img
+                      src="/images/user.png"
+                      alt="Shekhara K N"
+                      className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
+                    />
+                    <h3 className="text-xl font-semibold mb-2">Shekhara K N</h3>
+                    <p className="text-blue-600 mb-4 font-bold">
+                      Project Guide
+                    </p>
+                    <p className="text-gray-600">
+                      Head of Department, CSE <br />
+                      Govt. CPC Polytechnic College, Mysore
+                    </p>
+                  </div>
+                  <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 text-center">
+                    <img
+                      src="/images/bharath.jpg"
+                      alt="Bharath"
+                      className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
+                    />
+                    <h3 className="text-xl font-semibold mb-2">Bharath</h3>
+                    <p className="text-blue-600 mb-4 font-bold">
+                      Project Guide
+                    </p>
+                    <p className="text-gray-600">
+                      Lecturer, CSE <br />
+                      Govt. CPC Polytechnic College, Mysore
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
           </div>
         </div>
       </div>

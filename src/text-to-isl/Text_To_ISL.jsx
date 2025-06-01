@@ -17,7 +17,7 @@ const kannadaSentences = [
   "ಬೇಕು",
   "ಏನು",
   "ಬಾಯಾರಿಕೆ",
-  "ತಿನ್ನಿರಿ",
+  "ತಿನ್ನು",
   "ಭಾವನೆ",
   "ಜ್ವರ",
   "ಮಾಹಿತಿ",
@@ -28,7 +28,7 @@ const kannadaSentences = [
   "ಸ್ವಾಗತ",
   "ಶೌಚಾಲಯ",
   "ಬೈ",
-  "ಹೊಂದಿಕೊಳ್ಳಿ",
+  "ಪಡೆಯಿರಿ",
   "ತೆಗೆದುಕೊಳ್ಳಿ",
   "ನೀರು",
   "ಪೋಷಕರು",
@@ -44,22 +44,20 @@ const kannadaSentences = [
   "ಇಲ್ಲ",
   "ನೋವು",
   "ಕರೆ",
-  "ಹೋಗಿ",
+  "ಹೋಗು",
   "ನನಗೆ ಬಾಯಾರಿಕೆಯಾಗಿದೆ.",
-  "ನನಗೆ ಊಟ ಬೇಕು.",
-  "ನನಗೆ ನಿದ್ರೆ ಬೇಕು.",
-  "ನಿಮ್ಮ ಹೆಸರೇನು?",
+  "ನನಗೆ ತಿನ್ನಬೇಕು.",
+  "ನನಗೆ ಮಲಗಬೇಕು.",
+  "ನಿನ್ನ ಹೆಸರೇನು?",
   "ನಾನು ಹೋಗುತ್ತಿಲ್ಲ.",
   "ನಾನು ಶೌಚಾಲಯಕ್ಕೆ ಹೋಗಬೇಕು.",
   "ನನಗೆ ನೀರು ಬೇಕು.",
-  "ನನಗೆ ಬಾಯಾರಿಕೆಯಾಗಿದೆ.",
   "ನನಗೆ ಹುಷಾರಿಲ್ಲ.",
-  "ನನಗೆ ಜ್ವರವಿದೆ.",
+  "ನನಗೆ ಜ್ವರ.",
   "ನನಗೆ ನೋವು ಇದೆ.",
   "ದಯವಿಟ್ಟು ನನಗೆ ಸಹಾಯ ಮಾಡಿ.",
-  "ದಯವಿಟ್ಟು ನನ್ನ ಪೋಷಕರಿಗೆ ತಿಳಿಸಿ.",
-  "ನಾನು ವಿಶ್ರಾಂತಿ ಪಡೆಯಬೇಕು.",
-  "ನನಗೆ ಸ್ನಾನ ಬೇಕು.",
+  "ದಯವಿಟ್ಟು ನನ್ನ ಹೆತ್ತವರಿಗೆ ತಿಳಿಸಿ.",
+  "ನಾನು ವಿಶ್ರಾಂತಿ ಪಡೆಯಲು ಬಯಸುತ್ತೇನೆ.",
   "ನನಗೆ ಸಮಸ್ಯೆ ಇದೆ.",
   "ನಾನು ಅಪಾಯದಲ್ಲಿದ್ದೇನೆ.",
 ];
@@ -101,7 +99,6 @@ const englishSentences = [
   "Pain",
   "Call",
   "Go",
-
   "I am thirsty.",
   "I want to eat.",
   "I want to sleep.",
@@ -129,6 +126,14 @@ kannadaSentences.forEach((sentence, index) => {
     sentenceMapping[sentence] = englishSentences[index];
   }
 });
+
+// Helper to normalize Kannada input for direct mapping
+function normalizeKannada(text) {
+  return text
+    .replace(/[\p{P}\p{S}]/gu, "") // Remove punctuation/symbols
+    .replace(/\s+/g, " ") // Collapse multiple spaces
+    .trim();
+}
 
 // Function to translate text using Google Translate API
 const translateText = async (text, sourceLang = "kn", targetLang = "en") => {
@@ -198,9 +203,17 @@ function Text_To_ISL() {
         // If Kannada is selected, translate to English first
         if (selectedLanguage === "kannada") {
           try {
-            // Check if the sentence has a direct mapping
-            if (sentenceMapping[text]) {
-              const mappedText = sentenceMapping[text];
+            // Normalize input for direct mapping
+            const normalizedInput = normalizeKannada(text);
+            // Try to find a normalized match in sentenceMapping
+            let mappedText = null;
+            for (const kannada of Object.keys(sentenceMapping)) {
+              if (normalizeKannada(kannada) === normalizedInput) {
+                mappedText = sentenceMapping[kannada];
+                break;
+              }
+            }
+            if (mappedText) {
               setTranslatedEnglish(mappedText);
               textToProcess = mappedText;
               setIsDirectMapping(true);
@@ -271,7 +284,7 @@ function Text_To_ISL() {
     setInputText(sentence);
     handleTranslate(sentence);
     window.scrollTo({
-      top: 0,
+      top: 100,
       behavior: "smooth", // Optional: 'smooth' or 'auto'
     });
   };

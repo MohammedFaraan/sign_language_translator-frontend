@@ -210,7 +210,7 @@ function About() {
               
             </div>
 
-            {/* Project Guide */}
+            {/* Project Guide Row-1 */}
             <div className="col-span-1 md:col-span-3 mt-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                   <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 text-center">
@@ -231,10 +231,10 @@ function About() {
                   <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 text-center">
                     <img
                       src="/images/bharath.jpg"
-                      alt="Bharath"
+                      alt="Bharath G"
                       className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
                     />
-                    <h3 className="text-xl font-semibold mb-2">Bharath</h3>
+                    <h3 className="text-xl font-semibold mb-2">Bharath G</h3>
                     <p className="text-blue-600 mb-4 font-bold">
                       Project Guide
                     </p>
@@ -245,6 +245,55 @@ function About() {
                   </div>
                 </div>
               </div>
+
+              {/* Project Guide Row-2 */}
+            <div className="col-span-1 md:col-span-3 ">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                  <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 text-center">
+                    <img
+                      src="/images/jayasudan.jpg"
+                      alt="Jayasudan M"
+                      className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
+                    />
+                    <h3 className="text-xl font-semibold mb-2">Jayasudan M</h3>
+                    <p className="text-blue-600 mb-4 font-bold">
+                      Project Mentor
+                    </p>
+                    <p className="text-gray-600">
+                      Founder, DeepVisionTech
+                    </p>
+                  </div>
+                  <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 text-center">
+                    <img
+                      src="/images/karthik.jpg"
+                      alt="Karthik Venkat"
+                      className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
+                    />
+                    <h3 className="text-xl font-semibold mb-2">Karthik Venkat</h3>
+                    <p className="text-blue-600 mb-4 font-bold">
+                      Project Co-ordinator
+                    </p>
+                    <p className="text-gray-600">
+                      Speech Technologist
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-span-2 md:col-span-3 mb-8">
+              <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 text-center max-w-xl mx-auto">
+                <img
+                  src="/images/rubby.jpg"
+                  alt="Mohammed Faraan"
+                  className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
+                />
+                <h3 className="text-xl font-semibold mb-2">Rubby</h3>
+                <p className="text-blue-600 mb-4 font-bold">Project Co-ordinator</p>
+                <p className="text-gray-600">
+                  Sign Language Teacher & Interpreter, AIISH
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
